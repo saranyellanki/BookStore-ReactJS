@@ -1,0 +1,29 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-password {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  color: #343434;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-choose {
+  display: flex;
+  justify-content: space-between;
+}
