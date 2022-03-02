@@ -1,0 +1,123 @@
+.cart {
+  width: 1000px;
+  padding-bottom: 20px;
+  border: 1px solid rgb(141, 141, 141);
+}
+
+.cart-page {
+  padding-left: 200px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.cart-heading {
+  padding: 30px 0px 50px 40px;
+  font-size: 25px;
+  font-family: 'Roboto' sans-serif;
+}
+
+.cart-book {
+  padding-left: 40px;
+  display: flex;
+}
+
+.cart-book img {
+  padding-right: 40px;
+}
+
+.cart-book span {
+  padding-bottom: 20px;
+}
+
+.book-title {
+  font-size: 20px;
+}
+
+.book-author {
+  font-size: 13px;
+  color: rgb(110, 110, 110);
+}
+
+.book-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.book-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantity {
+  padding-left: 175px;
+  padding-bottom: 70px;
+  display: flex;
+}
+
+.place-order {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 100px;
+}
+
+.decrement {
+  display: flex;
+  margin-right: 10px;
+}
+
+.book-number {
+  border: 2px solid black;
+  width: 40px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.increment {
+  display: flex;
+  margin-left: 10px;
+}
+
+.delete {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.delete :hover {
+  background-color: rgb(189, 189, 189);
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer {
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto' sans-serif;
+  font-size: 20px;
+  border: 1px solid rgb(141, 141, 141);
+}
+
+.customer-container {
+  width: 1000px;
+  padding-left: 200px;
+  padding-bottom: 20px;
+}
+
+.textFields {
+  padding-right: 20px;
+  padding-top: 10px;
+}
