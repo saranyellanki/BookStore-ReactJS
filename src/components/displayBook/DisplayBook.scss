@@ -7,8 +7,7 @@
 }
 
 .allBooks {
-  padding: 10px;
-
+  padding: 10px 15px 15px 0px;
 }
 
 .heading {
@@ -59,6 +58,8 @@
 .review {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 200px;
   padding-top: 5px;
   padding-bottom: 10px;
 }
