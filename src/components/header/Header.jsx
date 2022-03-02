@@ -5,15 +5,24 @@ import education from '../../assets/education.svg';
 import InputBase from '@mui/material/InputBase';
 import './Header.scss';
 import { PersonOutlined, ShoppingCartOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { Badge } from "@mui/material";
 
-const Header = () => {
+const Header = (props) => {
+
+  const navigate = useNavigate();
+
+  const openCart = () => {
+    navigate('/cart')
+  }
+
   return (<>
     <div className='header'>
       <img className='image-header' src={education} alt="img" />
       <span className='image-title'>Bookstore</span>
       <div className="search">
         <Search>
-          <SearchIconWrapper><SearchIcon style={{fontSize:'medium', color:'#9D9D9D'}} /></SearchIconWrapper>
+          <SearchIconWrapper><SearchIcon style={{ fontSize: 'medium', color: '#9D9D9D' }} /></SearchIconWrapper>
           <StyledInputBase
             placeholder="Search..."
             inputProps={{ 'aria-label': 'search' }}
@@ -21,11 +30,13 @@ const Header = () => {
         </Search>
       </div>
       <div className="person-details">
-        <PersonOutlined style={{color:'#FFFFFF'}} />
+        <PersonOutlined style={{ color: '#FFFFFF' }} />
         <span className="person-name">{localStorage.getItem('fullName').split(' ')[0]}</span>
       </div>
       <div className="cart-details">
-        <ShoppingCartOutlined style={{color:'#FFFFFF'}} />
+        <Badge badgeContent={props.cartArr.length} color="primary">
+          <ShoppingCartOutlined onClick={openCart} style={{ color: '#FFFFFF' }} />
+        </Badge>
         <span className="person-name">Cart</span>
       </div>
     </div>
