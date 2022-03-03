@@ -7,11 +7,14 @@ import './Header.scss';
 import { PersonOutlined, ShoppingCartOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@mui/material";
+import { useSelector } from "react-redux";
 
-const Header = (props) => {
+const Header = () => {
 
   const navigate = useNavigate();
 
+  const cartArr = useSelector((state) => state.getCart)
+  
   const openCart = () => {
     navigate('/cart')
   }
@@ -34,7 +37,7 @@ const Header = (props) => {
         <span className="person-name">{localStorage.getItem('fullName').split(' ')[0]}</span>
       </div>
       <div className="cart-details">
-        <Badge badgeContent={props.cartArr.length} color="primary">
+        <Badge badgeContent={cartArr.cartItems ? cartArr.cartItems.length : ""} color="primary">
           <ShoppingCartOutlined onClick={openCart} style={{ color: '#FFFFFF' }} />
         </Badge>
         <span className="person-name">Cart</span>
