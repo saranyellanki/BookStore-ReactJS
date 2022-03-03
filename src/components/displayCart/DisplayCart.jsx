@@ -4,12 +4,38 @@ import img from '../../assets/Image 8.png'
 import { Button, TextField, TextareaAutosize, Checkbox } from '@mui/material';
 import CartService from '../../services/CartService';
 import { AddCircleOutline, RemoveCircleOutline } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getCart } from '../../redux/actions/bookActions';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 const cartService = new CartService();
 
-const DisplayCart = (props) => {
+const DisplayCart = () => {
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    getCartItems();
+  }, [])
+
+  const getCartItems = () => {
+    cartService.getCart()
+      .then((res) => {
+        // console.log(res.data.data);
+        dispatch(getCart(res.data.data.book));
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
 
   const [customer, setcustomer] = React.useState(false)
+
+  const cartArr = useSelector((state) => state.getCart)
 
   const customerDetails = () => {
     setcustomer(true);
@@ -19,7 +45,7 @@ const DisplayCart = (props) => {
     cartService.deleteItem(book._id)
       .then((res) => {
         console.log(res);
-        props.getCart();
+        getCartItems();
       }).catch((err) => {
         console.log(err);
       })
@@ -30,34 +56,36 @@ const DisplayCart = (props) => {
       <div className="cart-page">
         <div className='cart'>
           <div className="cart-heading">
-            <span>My cart {props.cartArr.length}</span>
+            <span>My cart ({cartArr.cartItems ? cartArr.cartItems.length : ""})</span>
           </div>
-          {props.cartArr.map((book, index) =>
-            <div key={book._id}>
-              <div className="cart-book">
-                <img src={img} alt="img" />
-                <div className="book-detail">
-                  <span className='book-title'>{book.bookName}</span>
-                  <span className='book-author'>by {book.author}</span>
-                  <span className='book-price'>Rs. {book.price}</span>
+          {cartArr.cartItems ?
+            cartArr.cartItems.map((book, index) =>
+              <div key={book._id}>
+                <div className="cart-book">
+                  <img src={img} alt="img" />
+                  <div className="book-detail">
+                    <span className='book-title'>{book.bookName}</span>
+                    <span className='book-author'>by {book.author}</span>
+                    <span className='book-price'>Rs. {book.price}</span>
+                  </div>
+                </div>
+                <div className="quantity">
+                  <div className='decrement'>
+                    <RemoveCircleOutline />
+                  </div>
+                  <div className='book-number'>
+                    <span> 1 </span>
+                  </div>
+                  <div className='increment'>
+                    <AddCircleOutline />
+                  </div>
+                  <div className='delete'>
+                    <span onClick={() => removeItem(book)}>Remove</span>
+                  </div>
                 </div>
               </div>
-              <div className="quantity">
-                <div className='decrement'>
-                  <RemoveCircleOutline />
-                </div>
-                <div className='book-number'>
-                  <span> 1 </span>
-                </div>
-                <div className='increment'>
-                  <AddCircleOutline />
-                </div>
-                <div className='delete'>
-                  <span onClick={() => removeItem(book)}>Remove</span>
-                </div>
-              </div>
-            </div>
-          )}
+            ) :
+            ""}
           <div className="place-order" onClick={customerDetails}>
             <Button style={{
               width: '150px',
@@ -140,15 +168,18 @@ const DisplayCart = (props) => {
                 InputLabelProps={{ style: { fontSize: 15 } }} />
             </div>
             <div>
-              <span style={{ fontSize: '15px' }}>Type</span>
-            </div>
-            <div>
-              <Checkbox />
-              <span style={{ fontSize: '15px' }}>Home</span>
-              <Checkbox />
-              <span style={{ fontSize: '15px' }}>Work</span>
-              <Checkbox />
-              <span style={{ fontSize: '15px' }}>Other</span>
+              <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label">Type</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel value="Home" control={<Radio />} label="Home" />
+                  <FormControlLabel value="Work" control={<Radio />} label="Work" />
+                  <FormControlLabel value="Other" control={<Radio />} label="Other" />
+                </RadioGroup>
+              </FormControl>
             </div>
             <div className="place-order">
               <Button style={{
