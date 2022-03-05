@@ -19,6 +19,10 @@ class CartService {
     return axiosService.get(`${baseURL}/get_cart_items`,header);
   }
 
+  updateCart(data) {
+    return axiosService.put(`${baseURL}/cart_item_quantity/${data._id}`,data,header)
+  }
+
   deleteItem(data){
     return axiosService.delete(`${baseURL}/remove_cart_item/${data}`,header)
   }
