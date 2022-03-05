@@ -11,8 +11,6 @@ const cartService = new CartService();
 
 const DisplayBook = (props) => {
 
-  const [addCart, setAddCart] = React.useState(true);
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.getCart)
 
@@ -37,7 +35,6 @@ const DisplayBook = (props) => {
     cartService.addToCart(data)
       .then((res) => {
         // console.log(res);
-        setAddCart(false);
         dispatch(getCart(res.data.data.book))
       }).catch((err) => {
         console.log(err);
