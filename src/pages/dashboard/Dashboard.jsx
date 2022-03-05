@@ -13,7 +13,7 @@ const Dashboard = () => {
   const getBooks = () => {
     bookService.getAllBooks()
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setBookArr(res.data.data)
       }).catch((err) => {
         console.log(err);
