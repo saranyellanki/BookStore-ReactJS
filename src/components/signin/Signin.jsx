@@ -48,7 +48,9 @@ const Signin = () => {
         .then((res) => {
           localStorage.setItem("token", res.data.data.token)
           localStorage.setItem("fullName", res.data.data.user.fullName)
-          navigate('/dashboard')
+          setTimeout(() => {
+            navigate('/dashboard')
+          }, 2000);
         }).catch((err) => {
           console.log(err);
         })
