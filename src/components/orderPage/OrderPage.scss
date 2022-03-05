@@ -1,0 +1,69 @@
+.order {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.order-img {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.h4 {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+
+.summary {
+  margin-top: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 750px;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.summary-details {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 750px;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.summary-heading {
+  display: flex;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  align-items: center;
+}
+
+.address {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  align-items: center;
+}
