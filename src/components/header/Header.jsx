@@ -19,10 +19,14 @@ const Header = () => {
     navigate('/cart')
   }
 
+  const display = () => {
+    navigate('/dashboard')
+  }
+
   return (<>
     <div className='header'>
       <img className='image-header' src={education} alt="img" />
-      <span className='image-title'>Bookstore</span>
+      <span className='image-title' onClick={display}>Bookstore</span>
       <div className="search">
         <Search>
           <SearchIconWrapper><SearchIcon style={{ fontSize: 'medium', color: '#9D9D9D' }} /></SearchIconWrapper>
@@ -37,7 +41,7 @@ const Header = () => {
         <span className="person-name">{localStorage.getItem('fullName').split(' ')[0]}</span>
       </div>
       <div className="cart-details">
-        <Badge badgeContent={cartArr.cartItems ? cartArr.cartItems.length : ""} color="primary">
+        <Badge badgeContent={cartArr.cartItems ? cartArr.cartItems.length : cartArr.cartItems} color="primary">
           <ShoppingCartOutlined onClick={openCart} style={{ color: '#FFFFFF' }} />
         </Badge>
         <span className="person-name">Cart</span>
