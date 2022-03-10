@@ -39,7 +39,7 @@ const DisplayCart = () => {
 
   React.useEffect(() => {
     getCartItems();
-  }, [])
+  }, [dispatch])
 
   const getCartItems = () => {
     cartService.getCart()
