@@ -16,13 +16,15 @@ const DisplayBook = (props) => {
 
   React.useEffect(() => {
     getCartItems();
-  }, [])
+  }, [dispatch])
 
   const getCartItems = () => {
     cartService.getCart()
       .then((res) => {
-        // console.log(res.data.data);
-        dispatch(getCart(res.data.data.book));
+        // console.log(res.data.code);
+        if(res.data.code == 200) {
+          dispatch(getCart(res.data.data.book));
+        }
       }).catch((err) => {
         console.log(err);
       })
