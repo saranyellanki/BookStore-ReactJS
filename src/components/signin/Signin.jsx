@@ -50,7 +50,7 @@ const Signin = () => {
           localStorage.setItem("fullName", res.data.data.user.fullName)
           setTimeout(() => {
             navigate('/dashboard')
-          }, 2000);
+          }, 1000);
         }).catch((err) => {
           console.log(err);
         })
