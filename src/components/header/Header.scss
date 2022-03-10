@@ -4,10 +4,11 @@
   background-color: #A03037;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .image-header {
-  padding-left: 200px;
+  padding-left: 2%;
 }
 
 .image-title {
@@ -15,10 +16,10 @@
   font-size: 20px;
   padding-left: 10px;
   font-family: 'Roboto', sans-serif;
+  cursor: pointer;
 }
 
 .person-details {
-  padding-left: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,10 +33,21 @@
 }
 
 .cart-details {
-  padding-left: 50px;
   display: flex;
+  padding-left: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.person-cart {
+  display: flex;
+  margin-right: 10%;
+}
+
+.title-search {
+  display: flex;
+  margin-left: 10%;
+  align-items: center;
 }

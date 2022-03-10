@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
 
   const navigate = useNavigate();
 
   const cartArr = useSelector((state) => state.getCart)
-  
+
   const openCart = () => {
     navigate('/cart')
   }
@@ -23,28 +23,37 @@ const Header = () => {
     navigate('/dashboard')
   }
 
+  const searchBook = (event) => {
+    props.search(event.target.value)
+  }
+
   return (<>
     <div className='header'>
-      <img className='image-header' src={education} alt="img" />
-      <span className='image-title' onClick={display}>Bookstore</span>
-      <div className="search">
-        <Search>
-          <SearchIconWrapper><SearchIcon style={{ fontSize: 'medium', color: '#9D9D9D' }} /></SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search..."
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </Search>
+      <div className="title-search">
+        <img className='image-header' src={education} alt="img" />
+        <span className='image-title' onClick={display}>Bookstore</span>
+        <div className="search">
+          <Search>
+            <SearchIconWrapper><SearchIcon style={{ fontSize: 'medium', color: '#9D9D9D' }} /></SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search..."
+              inputProps={{ 'aria-label': 'search' }}
+              onChange={searchBook}
+            />
+          </Search>
+        </div>
       </div>
-      <div className="person-details">
-        <PersonOutlined style={{ color: '#FFFFFF' }} />
-        <span className="person-name">{localStorage.getItem('fullName').split(' ')[0]}</span>
-      </div>
-      <div className="cart-details">
-        <Badge badgeContent={cartArr.cartItems ? cartArr.cartItems.length : cartArr.cartItems} color="primary">
-          <ShoppingCartOutlined onClick={openCart} style={{ color: '#FFFFFF' }} />
-        </Badge>
-        <span className="person-name">Cart</span>
+      <div className="person-cart">
+        <div className="person-details">
+          <PersonOutlined style={{ color: '#FFFFFF' }} />
+          <span className="person-name">{localStorage.getItem('fullName').split(' ')[0]}</span>
+        </div>
+        <div className="cart-details">
+          <Badge badgeContent={cartArr.cartItems ? cartArr.cartItems.length : cartArr.cartItems} color="primary">
+            <ShoppingCartOutlined onClick={openCart} style={{ color: '#FFFFFF' }} />
+          </Badge>
+          <span className="person-name">Cart</span>
+        </div>
       </div>
     </div>
   </>
@@ -55,13 +64,16 @@ const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '3px',
   backgroundColor: '#FCFCFC',
-  width: '490px',
   height: '33px',
   display: 'flex',
   alignItems: 'center',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(15),
+  marginLeft: '10%',
+  [theme.breakpoints.up('lg')]: {
+    minWidth: '490px',
   },
+  [theme.breakpoints.up('md')]: {
+    width: '300px',
+  }
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
